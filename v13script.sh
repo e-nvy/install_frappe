@@ -15,13 +15,13 @@ sudo apt install libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev lib
 curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt update -y
 sudo apt-get install -y nodejs
-sudo apt install npm
+sudo apt install npm -y
 sudo systemctl start mariadb
 sudo systemctl start redis
 echo " Do you want to change password of mysql? (yes/no)"
 read OPTION 
-if ["$OPTION" -eq "yes"] || ["$OPTION" -eq "y"]
-then;
+if ["$OPTION" -eq yes] || ["$OPTION" -eq y]
+then
     sudo mysql_secure_installation
 fi
 sudo npm install --global yarn
