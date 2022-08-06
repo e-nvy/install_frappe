@@ -12,14 +12,17 @@ sleep 3
 sudo apt-get install git make build-essential libssl-dev zlib1g-dev -y
 sudo apt install libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm -y
 sudo apt install libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev redis mariadb-server cron -y
+sudo apt install supervisor -y
 curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt update -y
 sudo apt-get install -y nodejs
+sudo apt update -y
 sudo apt install npm -y
 sudo systemctl start mariadb
 sudo systemctl start redis
+sudo systemctl start supervisor
 echo " Do you want to change password of mysql? (yes/no)"
 read OPTION 
+
 if [ $OPTION = yes ] || [ $OPTION = y ];
 then
     sudo mysql_secure_installation
@@ -43,7 +46,7 @@ pip3 install frappe-bench==5.8.1
 rm -rf frappe_v13
 
 bench init --frappe-branch v13.23.0 frappe_v13
-cd frappe-bench_v13
+cd frappe_v13
 
 pyenv local 3.8.1
 bench get-app erpnext --branch v13.23.0
@@ -51,5 +54,5 @@ echo "Enter Domain name  (must not be registerd in mysql before)  :"
 read SITENAME
 bench new-site $SITENAME
 bench use $SITENAME
-
+bench --site $SITENAME install-app erpnext
 echo "Thanks for using script. Now use "bench start"   -Envy"
