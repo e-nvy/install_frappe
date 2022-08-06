@@ -29,6 +29,7 @@ then
     sudo mysql_secure_installation
 fi
 sudo npm install --global yarn
+rm -rf ~/.pyenv
 
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
