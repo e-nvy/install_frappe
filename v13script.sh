@@ -37,9 +37,14 @@ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
 echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 
-. ~/.bashrc
-pyenv install 3.8.1 
+rm -rf temp.sh
+
+touch temp.sh
+
+echo 'pyenv install 3.8.1 
+
 cd
+
 pyenv shell 3.8.1
 
 python --version
@@ -52,9 +57,8 @@ cd frappe_v13
 
 pyenv local 3.8.1
 bench get-app erpnext --branch v13.23.0
-echo "Enter Domain name  (must not be registerd in mysql before)  :"
-read SITENAME
-bench new-site $SITENAME
-bench use $SITENAME
-bench --site $SITENAME install-app erpnext
+
 echo "Thanks for using script. Now use "bench start"   -Envy"
+sleep 10
+rm -rf temp.sh' >> temp.sh
+gnome-terminal -- sh temp.sh
