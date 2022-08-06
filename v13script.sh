@@ -16,7 +16,8 @@ sudo apt install supervisor -y
 curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 sudo apt update -y
-sudo apt install npm -y
+sudo apt install aptitude -y
+sudo aptitude install npm -y
 sudo systemctl start mariadb
 sudo systemctl start redis
 sudo systemctl start supervisor
