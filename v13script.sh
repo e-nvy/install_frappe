@@ -20,7 +20,7 @@ sudo systemctl start mariadb
 sudo systemctl start redis
 echo " Do you want to change password of mysql? (yes/no)"
 read OPTION 
-if ["$OPTION" -eq yes] || ["$OPTION" -eq y]
+if [ $OPTION = yes ] || [ $OPTION = y ];
 then
     sudo mysql_secure_installation
 fi
@@ -40,7 +40,7 @@ echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 pyenv install 3.8.1 
 cd
 # exec "$SHELL"
-. ~/.bashrc
+. ~/.bashrc 
 pyenv shell 3.8.1
 #To check if version is right
 python --version
