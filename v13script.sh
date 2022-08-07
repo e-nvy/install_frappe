@@ -1,8 +1,6 @@
 #!/bin/bash
 
-#To delete frappe_bench folder if already installed to avoid error
 
-#setting up utilities
 sudo apt clean 
 sudo apt-get update -y
 
@@ -42,17 +40,15 @@ fi
 
 sudo npm install --global yarn
 
+####### Installing Pyenv #################
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
 echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 
-rm -rf temp.sh
+~ /.bashrc
 
-touch temp.sh
-chmod +x temp.sh
-echo '
 pyenv install 3.8.1 
 
 cd
@@ -70,6 +66,4 @@ cd frappe_v13
 pyenv local 3.8.1
 bench get-app erpnext --branch v13.23.0
 
-echo "Thanks for using script. Now use "bench start"   -Envy"' >> temp.sh
-
-gnome-terminal -- . ~/.bashrc && sh temp.sh
+echo "Thanks for using script. Now use "bench start"   -Envy"
