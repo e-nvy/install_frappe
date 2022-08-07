@@ -51,7 +51,7 @@ echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 rm -rf temp.sh
 
 touch temp.sh
-
+chmod +x temp.sh
 echo '
 pyenv install 3.8.1 
 
