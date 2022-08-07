@@ -36,36 +36,6 @@ then
     sudo mysql_secure_installation
 fi
 
-##########################################
-
-sudo npm install --global yarn
-
-####### Installing Pyenv #################
-git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-
-. ~/.bashrc
-
-pyenv install 3.8.1 
-
-cd
-
-pyenv shell 3.8.1
-
-python --version
-
-pip3 install frappe-bench==5.8.1
-rm -rf frappe_v13
-
-bench init --frappe-branch v13.23.0 frappe_v13
-cd frappe_v13
-
-pyenv local 3.8.1
-bench get-app erpnext --branch v13.23.0
-
 sudo cat /dev/null > /etc/mysql/mariadb.conf.d/50-server.cnf
 sudo echo "# These groups are read by MariaDB server.
 # Use it for options that only the server (but not clients) should see
@@ -203,6 +173,36 @@ expire_logs_days        = 10
 default-character-set = utf8mb4" >> /etc/mysql/mariadb.conf.d/50-server.cnf
 
 sudo systemctl restart mariadb
+
+##########################################
+
+sudo npm install --global yarn
+
+####### Installing Pyenv #################
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+
+. ~/.bashrc
+
+pyenv install 3.8.1 
+
+cd
+
+pyenv shell 3.8.1
+
+python --version
+
+pip3 install frappe-bench==5.8.1
+rm -rf frappe_v13
+
+bench init --frappe-branch v13.23.0 frappe_v13
+cd frappe_v13
+
+pyenv local 3.8.1
+bench get-app erpnext --branch v13.23.0
 
 echo 'Enter site name(must not included in mysql database) :'
 read SITENAME
