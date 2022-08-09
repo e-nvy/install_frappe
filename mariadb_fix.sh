@@ -1,3 +1,4 @@
+#!/bin/bash
 # Use this as root "sudo su"
 cat /dev/null > /etc/mysql/mariadb.conf.d/50-server.cnf
 echo "# These groups are read by MariaDB server.
